@@ -18,7 +18,7 @@ public class ProjectSecurityConfig {
                 .authenticated()
                 .requestMatchers("api/v1/notice", "api/v1/contact", "/error")
                 .permitAll());
-    http.formLogin(withDefaults());
+    http.formLogin(formLoginConfig -> formLoginConfig.disable());
     http.httpBasic(withDefaults());
     return http.build();
   }
