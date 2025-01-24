@@ -35,7 +35,11 @@ public class ProjectSecurityConfig {
   public UserDetailsService userDetailsService() {
     UserDetails user =
         User.withUsername("user").password("{noop}.c@]4?6H3[{p").authorities("read").build();
-    UserDetails admin = User.withUsername("admin").password("{bcrypt}$2a$12$7twXWXRjw6fNwWv8bSPwLua80qYXsKYpuGJCNguLksHvzN8gZ4vjW").authorities("admin").build();
+    UserDetails admin =
+        User.withUsername("admin")
+            .password("{bcrypt}$2a$12$7twXWXRjw6fNwWv8bSPwLua80qYXsKYpuGJCNguLksHvzN8gZ4vjW")
+            .authorities("admin")
+            .build();
     return new InMemoryUserDetailsManager(user, admin);
   }
 
@@ -46,9 +50,9 @@ public class ProjectSecurityConfig {
 
   /**
    * From Spring Security 6.3
+   *
    * @return
    */
-
   @Bean
   public CompromisedPasswordChecker compromisedPasswordChecker() {
     return new HaveIBeenPwnedRestApiPasswordChecker();
