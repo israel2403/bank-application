@@ -14,11 +14,12 @@ public class ProjectSecurityConfig {
   @Bean
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(
-        (requests) -> requests
-            .requestMatchers("api/v1/account", "api/v1/balance", "api/v1/loan", "api/v1/card")
-            .authenticated()
-            .requestMatchers("api/v1/notice", "api/v1/contact", "/error")
-            .permitAll());
+        (requests) ->
+            requests
+                .requestMatchers("api/v1/account", "api/v1/balance", "api/v1/loan", "api/v1/card")
+                .authenticated()
+                .requestMatchers("api/v1/notice", "api/v1/contact", "/error")
+                .permitAll());
     http.formLogin(withDefaults());
     http.httpBasic(withDefaults());
     return http.build();
@@ -28,5 +29,4 @@ public class ProjectSecurityConfig {
   public PasswordEncoder passwordEncoder() {
     return PasswordEncoderFactories.createDelegatingPasswordEncoder();
   }
-
 }
