@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  springsecurity-mysql:
+    image: mysql:8.0.29
+    container_name: springsecurity
+    ports:
+      - '3303:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: eazybank
+    volumes:
+      - ~/volumes/spring-security/eazybank/mysql/:/var/lib/mysql
+    restart: unless-stopped

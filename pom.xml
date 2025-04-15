@@ -132,12 +132,12 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>8.2.0</version>
 				<configuration>
-					<!-- <url>jdbc:mysql://${env.MYSQL_HOST}:3306/${env.MYSQL_DATABASE}</url> -->
-					<url>jdbc:mysql://localhost:3306/eazybank</url>
+					<url>jdbc:mysql://${env.DATABASE_HOST}:${env.DATABASE_PORT}/${env.DATABASE_NAME}</url>
+					<!-- <url>jdbc:mysql://localhost:3306/eazybank</url> -->
 					<!-- <user>${env.MYSQL_USER}</user> -->
-					<user>isra</user>
+					<user>root</user>
 					<!-- <password>${env.MYSQL_PASSWORD}</password> -->
-					<password>C0ntr4s3ñ44321</password>
+					<password>${env.DATABASE_PASSWORD}</password>
 				</configuration>
 				<dependencies>
 					<dependency>

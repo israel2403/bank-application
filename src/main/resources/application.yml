@@ -12,10 +12,5 @@ spring:
     show-sql: true
     hibernate:
       format_sql: true
-  #flyway:
-  #  baseline-on-migrate: true
-  #  url: jdbc:mysql://localhost:3306/eazybank
-  #  user: isra
-  #  password: C0ntr4s3ñ44321
 server:
   port: 8081
