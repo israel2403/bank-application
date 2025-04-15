@@ -21,6 +21,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             .errorCode(HttpStatus.INTERNAL_SERVER_ERROR)
             .errorMessage(ex.getMessage())
             .errorTime(LocalDateTime.now())
+            .errors(Collections.emptyList())
             .build();
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponseDTO);
   }
