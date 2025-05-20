@@ -13,13 +13,16 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ProjectSecurityConfig {
   @Bean
   SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(
-        (requests) ->
-            requests
-                .requestMatchers("api/v1/account", "api/v1/balance", "api/v1/loan", "api/v1/card")
-                .authenticated()
-                .requestMatchers("api/v1/notice", "api/v1/contact", "/error")
-                .permitAll());
+    http.csrf(csrfConfig -> csrfConfig.disable())
+        .authorizeHttpRequests(
+            (requests) ->
+                requests
+                    .requestMatchers(
+                        "api/v1/account", "api/v1/balance", "api/v1/loan", "api/v1/card")
+                    .authenticated()
+                    .requestMatchers(
+                        "api/v1/notice", "api/v1/contact", "/error", "/api/v1/user/register")
+                    .permitAll());
     http.formLogin(withDefaults());
     http.httpBasic(withDefaults());
     return http.build();

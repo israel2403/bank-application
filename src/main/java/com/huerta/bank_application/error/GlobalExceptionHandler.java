@@ -39,4 +39,18 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
             .build();
     return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponseDTO);
   }
+
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<ErrorResponseDTO> handleIllegalArgumentException(
+      final IllegalArgumentException ex, WebRequest webRequest) {
+    final ErrorResponseDTO errorResponseDTO =
+        ErrorResponseDTO.builder()
+            .apiPath(webRequest.getDescription(false))
+            .errorCode(HttpStatus.BAD_REQUEST)
+            .errorMessage(ex.getMessage())
+            .errorTime(LocalDateTime.now())
+            .errors(Collections.emptyList()) // No field errors needed for this exception
+            .build();
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponseDTO);
+  }
 }
