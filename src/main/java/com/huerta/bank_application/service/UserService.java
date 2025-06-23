@@ -1,17 +1,15 @@
 package com.huerta.bank_application.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import com.huerta.bank_application.dto.UserDTO;
 import com.huerta.bank_application.entity.Customer;
 import com.huerta.bank_application.repository.CustomerRepository;
 import com.huerta.bank_application.request.CustomerRequest;
 import com.huerta.bank_application.utils.UserMapper;
-
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
